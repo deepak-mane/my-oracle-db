@@ -211,7 +211,6 @@ ORDER BY 1,2;
 
 ## Category: Users logged in
 01) Number of users connected to the environment in last 30 days
-
 ```
 SELECT TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD'),count(distinct A.OPRID) "Users"
 FROM PSACCESSLOG A
@@ -219,9 +218,7 @@ WHERE TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD') >= TO_CHAR(SYSDATE - 30,'YYYY-MM-DD')
 GROUP BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD')
 ORDER BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD') DESC;
 ```
-
 02) List of users connected to the environment in last 30 days, with connections count
-
 ```
 SELECT TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD'),
   A.OPRID,
@@ -232,7 +229,9 @@ GROUP BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD'),
   A.OPRID
 ORDER BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD') DESC,
   A.OPRID;
+```
 03) NUMBER OF connections TO the environment IN last 30 days
+```
 SELECT TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD'),
   COUNT(A.OPRID) "Connections"
 FROM PSACCESSLOG A
@@ -240,11 +239,9 @@ WHERE TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD') >= TO_CHAR(SYSDATE - 30,'YYYY-MM-DD')
 GROUP BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD')
 ORDER BY TO_CHAR(A.LOGINDTTM,'YYYY-MM-DD') DESC;
 ```
-
 ## Category: SQLs related to PS-Query
 01) If you forget the name of a query, but know that it contains certain fields for sure,
 the following SQL could be helpful
-
 ```
 SELECT A.OPRID, A.QRYNAME, A.DESCR
 FROM PSQRYDEFN A
@@ -256,7 +253,6 @@ AND A.QRYNAME IN (SELECT B1.QRYNAME FROM PSQRYFIELD B1 WHERE B1.FIELDNAME LIKE '
 ```
 02) Changing the OPRID(Owner) of a private query
 (Please change the new OPRID, OLDOPRID and Private Query name appropriately)
-
 ```
 update psqrydefn set OPRID = 'NEWOPRID' where OPRID = 'OLDOPRID' AND qryname = 'PRIVATE_QUERY_NAME';
 update psqrydefnlang set OPRID = 'NEWOPRID' where OPRID = 'OLDOPRID' AND qryname = 'PRIVATE_QUERY_NAME';
