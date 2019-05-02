@@ -85,6 +85,7 @@ START WITH PS.PORTAL_URI_SEG2 IN (SELECT PSB.PNLGRPNAME FROM PS_PRCSDEFNPNL PSB 
 AND PS.PORTAL_URI_SEG3 IN ('GBL','USA')
 CONNECT BY PRIOR PS.PORTAL_PRNTOBJNAME = PS.PORTAL_OBJNAME
 AND PS.PORTAL_NAME = 'EMPLOYEE' AND PS.PORTAL_LABEL <> 'Root';
+```
 
 ## Category: Process Scheduler
 01) Process Scheduler Server(s) status
@@ -283,5 +284,6 @@ SELECT   b.menuname, b.barname, b.baritemname, d.pnlname, c.pageaccessdescr
 GROUP BY b.menuname, b.barname, b.baritemname, d.pnlname, c.pageaccessdescr
 ORDER BY d.pnlname;
 ```
+
 
 # END
