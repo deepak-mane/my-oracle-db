@@ -1,5 +1,20 @@
 # Useful Generic Querries:
 
+## TroubleShooting
+
+### You can use this sql statement to get the history for any date:
+```
+SELECT * FROM V$SQL V where  to_date(v.FIRST_LOAD_TIME,'YYYY-MM-DD hh24:mi:ss') > sysdate - 60
+```
+For recent SQL:
+```
+select * from v$sql
+```
+For history:
+```
+select * from dba_hist_sqltext
+```
+
 [REF](http://ajaypeoplesoft.blogspot.in/2014/06/some-nice-to-have-sql-scripts.html)
 
 ## Category: Components, Component-Interfaces related queries
