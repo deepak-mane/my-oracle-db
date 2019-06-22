@@ -421,4 +421,13 @@ AND D.BARITEMNAME = E.BARITEMNAME
 AND D.PNLITEMNAME = E.PNLITEMNAME 
 AND A.OPRID='USER007'
 ```
+
+03) How to see Name of RECORD Used Behind of any Page?
+```
+select distinct RECNAME
+from PSPNLFIELD
+where PNLNAME = 'LM_IN_DFLT_GEN'
+```
+
+
 # END
