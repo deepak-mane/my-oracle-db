@@ -359,5 +359,23 @@ GROUP BY b.menuname, b.barname, b.baritemname, d.pnlname, c.pageaccessdescr
 ORDER BY d.pnlname;
 ```
 
+02) Query to find which Roles have access to certain PAGE
+
+```
+SELECT rc.rolename,
+  rd.descr ,
+  a.classid,
+  c.classdefndesc
+FROM psauthitem a,
+  psclassdefn c,
+  psroleclass rc,
+  psroledefn rd
+WHERE a.pnlitemname = 'LM_IN_DFLT_GEN'
+AND a.classid       = c.classid
+AND a.classid       = rc.classid
+AND rc.rolename     = rd.rolename
+ORDER BY rc.rolename;
+
+```
 
 # END
