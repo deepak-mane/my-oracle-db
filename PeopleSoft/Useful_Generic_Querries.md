@@ -378,4 +378,32 @@ ORDER BY rc.rolename;
 
 ```
 
+02) You can run this query and find out the authorizations. You give your oprid 
+to find out which all pages you can see or put specific page name , here 
+page name actually takes the pageitem name PNLITEMNAME which is page's name 
+inside component when you open component
+```
+SELECT DISTINCT A.OPRID 
+, E.PNLGRPNAME 
+, D.MENUNAME 
+, D.BARNAME 
+, D.BARITEMNAME 
+, D.PNLITEMNAME 
+, E.SUBITEMNUM 
+, D.DISPLAYONLY 
+, D.AUTHORIZEDACTIONS 
+FROM PSOPRDEFN A 
+, PSROLECLASS B 
+, PSROLEUSER C 
+, PSAUTHITEM D 
+, PS_SCC_COMPMENUBAR E 
+WHERE B.ROLENAME = C.ROLENAME 
+AND A.OPRID = C.ROLEUSER 
+AND B.CLASSID = D.CLASSID 
+AND D.MENUNAME = E.MENUNAME 
+AND D.BARNAME = E.BARNAME 
+AND D.BARITEMNAME = E.BARITEMNAME 
+AND D.PNLITEMNAME = E.PNLITEMNAME 
+AND A.OPRID='USER007'
+```
 # END
