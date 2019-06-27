@@ -1,17 +1,18 @@
 # PS Roles & Responsibilties:
+
 1.       Configured dev, test, pre prod and production instances for HSCM,FSCM,ELM,HUB
 2.       Monitoring daily internal server status.
 3.       Configured PeopleSoft work stations for development team.
 4.       Setting up report nodes and checking their posting status.
 5.       Creating users in db and assigning required roles. [If has DBA privilidges]
-``
+```
 SQL>SELECT * FROM DBA_ROLE_PRIVS;
 SQL>SELECT * FROM DBA_SYS_PRIVS;
 Sql>SELECT GRANTEE,PRIVILEGE FROM dba_sys_privs where grantee in(‘NABADM’,’POPLE’,’PS’);
 Sql>SELECT GRANTEE,GRANTED_ROLE,DEFAULT_ROLE FROM dba_role_privs where grantee in(‘NABADM’,’POPLE’,’PS’);
 SQL>CREATE USER RAJU IDENTIFIED BY RAJU DEFAULT TABLESPACE PSDEFAULT,TEMPORARY TABLESPACE PSTEMP;
 SQL>GRANT CONNECT,PSREADONLY TO RAJU;
-``
+```
 6.       Migrating projects from one environment to another environment using App designer/ STAT/ Phire.
 7.       Taking compare reports and migrating projects to higher instances.
 8.       Taking table backup using DM & at DB Level.
