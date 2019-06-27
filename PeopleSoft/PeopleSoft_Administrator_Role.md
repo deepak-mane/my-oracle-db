@@ -1,4 +1,4 @@
-# PS Roles & Responsibilties:
+# PeopleSoft Administrator Roles & Responsibilties:
 
 1. Configured dev, test, pre prod and production instances for HSCM,FSCM,ELM,HUB
 2. Monitoring daily internal server status.
