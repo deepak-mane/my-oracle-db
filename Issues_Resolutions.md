@@ -2,7 +2,7 @@
 
 
 ### [1.] Why would Oracle.ManagedDataAccess not work when Oracle.DataAccess does?
-<>Problem :</b>
+<b>Problem :</b>
 I'm developing a very simple application which I intend to use to troubleshoot an issue I am having on a few machines but before I even got that far I ran into a few issues, including cpu architecture differences and Oracle database libraries.
 
 I have a database server listed in tnsnames.ora, sitting in my C:\oracle\11g\network\admin directory. If I tnsping this server I get the desired response. If I code my C# program to connect to this server with the following code using Oracle.DataAccess.Client, it works.
