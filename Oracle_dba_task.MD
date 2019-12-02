@@ -1,6 +1,6 @@
 # Oracle DBA Tasks :-
 
-## Enable - Disable Archive Logging
+## [ 1. ] Enable - Disable Archive Logging
 ```
 When you run the database in NOARCHIVELOG mode, you disable the archiving of the redo log. If you want to take the backup of the database using RMAN then your database must be in ARCHIVELOG mode.
 A database backup, together with online and archived redo log files, guarantees that you can recover all committed transactions in the event of OS or disk faluer.
