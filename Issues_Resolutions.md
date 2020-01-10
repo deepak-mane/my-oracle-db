@@ -42,3 +42,37 @@ The order of precedence for resolving TNS names in ODP.NET, Managed Driver is th
 1. data source alias in the tnsnames.ora file present at %ORACLE_HOME%\network\admin (where %ORACLE_HOME% is an environment variable setting).
 
 I believe the reason your sample works with Oracle.DataAccess but not with Oracle.ManagedDataAccess is that Windows registry based configuration is not supported for the latter (see documentation) - the ODP.NET installation sets an ORACLE_HOME registry key (HLKM\SOFTWARE\Oracle\Key_NAME\ORACLE_HOME) which is recognized only by the unmanaged part.
+
+
+
+### [2.] Not able to use ldap.ora and tnsnames.ora together?
+<b>Problem :</b>
+Not able to use tnsnames.ora when ldap.ora is configured
+<b>Solution :</b>
++ Make sure tnsnames.ora, ldap.ora and sqlnet.ora all are present in admin
++ Contents of sqlnet.ora comment out domain #NAMES.DEFAULT_DOMAIN
++ Set NAMES.DIRECTORY_PATH= (TNSNAMES, LDAP) , so first TNSNAMES.ora is check first for specific database enteries before searching ldap
+
+
+C:\Oracle\product\12.1.0\client_1\network\admin
+- ldap.ora
+```
+#############################################################################
+# ldap.ora using global content switches
+#############################################################################
+DEFAULT_ADMIN_CONTEXT = "dc=oracle,dc=com"
+DIRECTORY_SERVERS= (myoracle.corp.dom :55100:55201)
+DIRECTORY_SERVER_TYPE = OID
+```
+- sqlnet.ora
+```
+################################################################################
+# Standard sqlnet.ora
+################################################################################
+#NAMES.DEFAULT_DOMAIN = dsm.com
+NAMES.DIRECTORY_PATH= (TNSNAMES, LDAP)
+```
+- tnsnames.ra
+```
+mydb=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=<hostname>)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=<servicename>)))
+```
